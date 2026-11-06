@@ -123,6 +123,15 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--petrol);outline-
 .listo .acciones{gap:.75rem}
 .aviso{font-size:.9rem;color:var(--muted);border-left:3px solid var(--apricot);padding-left:var(--s2)}
 
+/* Temas de consulta */
+.temas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 var(--s4)}
+.tema{padding-block:var(--s2);border-top:1px solid var(--line);display:flex;flex-direction:column;gap:.4rem}
+.tema h3{font-size:1.12rem;color:var(--petrol)}
+.tema p{color:var(--muted)}
+.temas-cta{margin-top:var(--s3);background:var(--petrol-soft);border-radius:14px;padding:var(--s3);display:flex;flex-wrap:wrap;gap:var(--s2);align-items:center;justify-content:space-between}
+.temas-cta p{max-width:60ch}
+@media (max-width:820px){.temas{grid-template-columns:1fr}}
+
 /* Novedades */
 .novedades{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3)}
 .nov{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:var(--s3);display:flex;flex-direction:column;gap:.6rem}
@@ -171,6 +180,7 @@ footer{border-top:1px solid var(--line);padding-block:var(--s3) var(--s4);displa
     </div>
     <nav aria-label="Secciones">
       <a href="#servicios">Servicios</a>
+      <a href="#temas">Temas de consulta</a>
       <a href="#trayectoria">Trayectoria</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -262,6 +272,28 @@ footer{border-top:1px solid var(--line);padding-block:var(--s3) var(--s4);displa
           </ul>
           <div class="pie"><button type="button" data-servicio="Gestión en salud y formación médica">Consultar honorarios →</button></div>
         </article>
+      </div>
+    </section>
+
+    <section id="temas" aria-labelledby="t-temas">
+      <div class="sec-head">
+        <span class="label">Consulta privada virtual</span>
+        <h2 id="t-temas">Temas de consulta</h2>
+        <p>Mis consultas están diseñadas para abordar diversas preocupaciones de salud, con un enfoque particular en las siguientes áreas.</p>
+      </div>
+      <div class="temas">
+        <article class="tema"><h3>Medicina del viajero</h3><p>Si planeás un viaje, es clave estar informado sobre las vacunas y precauciones necesarias. Te ofrezco asesoramiento personalizado para que tu experiencia sea segura y placentera, evitando enfermedades prevenibles.</p></article>
+        <article class="tema"><h3>Dengue</h3><p>Con la creciente incidencia del dengue, es fundamental estar preparado. Ofrezco información sobre la vacuna contra el dengue y seguimiento para quienes fueron diagnosticados, con información certera basada en la evidencia científica.</p></article>
+        <article class="tema"><h3>Actualización de vacunas en mayores de 16 años</h3><p>Mantener el calendario de vacunación al día es vital para tu salud. Reviso tus vacunas y te asesoro sobre las necesarias para protegerte de enfermedades como la gripe, la neumonía y otras.</p></article>
+        <article class="tema"><h3>Infecciones urinarias</h3><p>Las infecciones urinarias son comunes, pero no deben ser ignoradas. Ofrezco diagnóstico, tratamiento y consejos de prevención para cuidar tu salud urinaria.</p></article>
+        <article class="tema"><h3>Neumonía</h3><p>La neumonía puede ser grave, especialmente en ciertos grupos de riesgo. Te recomiendo la vacunación adecuada para reducir ese riesgo.</p></article>
+        <article class="tema"><h3>Infecciones de transmisión sexual (ITS)</h3><p>La sífilis, el HIV y el HPV son preocupaciones importantes. Te oriento sobre profilaxis preexposición y postexposición para que puedas cuidar tu salud sexual de manera efectiva.</p></article>
+        <article class="tema"><h3>Herpes zóster</h3><p>El herpes zóster puede ser doloroso y debilitante. Ofrezco evaluación, tratamiento y opciones de vacunación para minimizar el riesgo y las complicaciones.</p></article>
+        <article class="tema"><h3>COVID-19</h3><p>Brindo información actualizada sobre la prevención de COVID-19 y seguimiento para quienes tuvieron la enfermedad.</p></article>
+      </div>
+      <div class="temas-cta">
+        <p>Si buscás un enfoque profesional y comprensivo para cualquiera de estas inquietudes, te invito a solicitar una consulta virtual. Juntos podemos trabajar para cuidar tu salud y bienestar.</p>
+        <a class="btn btn-primary" href="#contacto" data-servicio="Consulta privada virtual">Solicitar consulta</a>
       </div>
     </section>
 
