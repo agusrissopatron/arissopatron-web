@@ -368,8 +368,8 @@ footer{border-top:1px solid var(--line);padding-block:var(--s3) var(--s4);displa
       <div class="contacto">
         <div class="info">
           <span class="label">Honorarios y propuestas</span>
-          <h2 id="t-contacto">Consultá por correo</h2>
-          <p>Completá tus datos y elegí el servicio. Se arma un correo con tu consulta para que lo envíes desde tu casilla, y recibís una respuesta automática con la modalidad de trabajo.</p>
+          <h2 id="t-contacto">Enviá tu consulta</h2>
+          <p>Completá tus datos, elegí el servicio y escribí tu consulta. Se envía directamente desde esta página y recibís en tu correo una respuesta automática con la modalidad de trabajo.</p>
           <p class="aviso">Las consultas virtuales no reemplazan la atención de urgencia. Ante un síntoma grave, acudí a la guardia más cercana.</p>
         </div>
 
@@ -409,24 +409,19 @@ footer{border-top:1px solid var(--line);padding-block:var(--s3) var(--s4);displa
             </select>
           </div>
           <div class="campo full">
-            <label for="mensaje">Contame brevemente qué necesitás <span class="opc">(opcional)</span></label>
-            <textarea id="mensaje" name="mensaje" placeholder="Por ejemplo: volumen mensual de auditorías, tipo de caso o motivo de consulta. No incluyas datos de pacientes."></textarea>
+            <label for="mensaje">Tu consulta</label>
+            <textarea id="mensaje" name="mensaje" required placeholder="Por ejemplo: volumen mensual de auditorías, tipo de caso o motivo de consulta. No incluyas datos de pacientes."></textarea>
           </div>
+          <input type="text" name="_honey" id="honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <p class="error full" id="err" role="alert" hidden></p>
           <div class="form-pie">
             <small>Tus datos se usan solo para responder esta consulta.</small>
-            <button class="btn btn-primary" type="submit">Preparar consulta</button>
+            <button class="btn btn-primary" type="submit" id="enviar">Enviar consulta</button>
           </div>
 
-          <div class="listo" id="listo" hidden>
-            <strong>Tu consulta está lista.</strong>
-            <span>Tocá el botón para abrirla en tu correo y enviarla. Si no se abre, copiá el texto y envialo a:</span>
-            <span class="mail" id="mailDest"></span>
-            <div class="acciones">
-              <a class="btn btn-primary" id="abrirMail" href="#">Abrir en mi correo</a>
-              <button class="btn btn-ghost" type="button" id="copiar">Copiar consulta</button>
-            </div>
-            <span id="copiado" class="opc" hidden>Consulta copiada.</span>
+          <div class="listo" id="listo" role="status" tabindex="-1" hidden>
+            <strong>Tu consulta fue enviada.</strong>
+            <span>En unos minutos vas a recibir en tu correo una respuesta automática con la modalidad de trabajo. Si no la ves, revisá la carpeta de spam.</span>
           </div>
         </form>
       </div>
@@ -440,12 +435,18 @@ footer{border-top:1px solid var(--line);padding-block:var(--s3) var(--s4);displa
 </div>
 
 <script>
-// Cambiá esta dirección si usás una casilla dedicada a consultas
+// Las consultas se envían con FormSubmit (gratuito) a esta casilla
 const MAIL = "agusrissopatron@gmail.com";
+const ENDPOINT = "https://formsubmit.co/ajax/" + MAIL;
+const RESPUESTAS = {
+ "Consulta privada virtual": "Hola, gracias por tu consulta.\n\nSoy médica especialista en Infectología y en Terapia Intensiva (MN 139791). Atiendo en forma 100% virtual.\n\nLa consulta privada es una videoconsulta de 40 minutos. Antes del encuentro reviso los estudios y resultados que me envíes, para aprovechar mejor el tiempo de la consulta. Algunos temas frecuentes: medicina del viajero, dengue, actualización de vacunas en mayores de 16 años, infecciones urinarias, neumonía, infecciones de transmisión sexual, herpes zóster y COVID-19.\n\nHonorarios: $120.000.\n\nPara coordinar, respondé este correo con un breve resumen de tu motivo de consulta y tus días y horarios de preferencia. Si tenés estudios recientes, podés adjuntarlos. Si la consulta es por un viaje, contame el destino, las fechas y tus vacunas previas.\n\nTe recuerdo que la consulta virtual no reemplaza la atención de urgencia. Ante un síntoma grave, acudí a la guardia más cercana.\n\nSaludos cordiales,\nDra. Agustina Risso Patrón\nInfectología · Terapia Intensiva\narissopatron.netlify.app",
+ "Auditoría médica y de facturación": "Hola, gracias por tu consulta.\n\nSoy médica especialista en Infectología y en Terapia Intensiva (MN 139791), con especialización en Gestión y Dirección de Instituciones de Salud y experiencia en auditoría médica. Trabajo en forma 100% virtual.\n\nEl servicio de auditoría médica y de facturación incluye auditoría de prestaciones e internaciones, análisis de pertinencia clínica y documentación respaldatoria, y revisión y respuesta de débitos, con informe escrito y la justificación de cada prestación.\n\nLos honorarios se presupuestan según el volumen y el alcance del trabajo. Te propongo coordinar una breve reunión virtual para conocer tu necesidad y, en base a eso, te envío una propuesta a medida.\n\nPara avanzar, respondé este correo con un breve detalle de lo que necesitás (tipo de institución, volumen aproximado de expedientes o prestaciones y plazos) y tus días y horarios de preferencia para la reunión.\n\nSaludos cordiales,\nDra. Agustina Risso Patrón\nInfectología · Terapia Intensiva\narissopatron.netlify.app",
+ "Consultoría institucional en infectología": "Hola, gracias por tu consulta.\n\nSoy médica especialista en Infectología y en Terapia Intensiva (MN 139791), con especialización en Gestión y Dirección de Instituciones de Salud y experiencia en el desarrollo de protocolos institucionales. Trabajo en forma 100% virtual.\n\nLa consultoría institucional puede incluir diseño y actualización de protocolos de profilaxis y tratamiento antibiótico, programas de uso racional de antimicrobianos, prevención y control de infecciones asociadas al cuidado de la salud, y capacitación de equipos médicos y de enfermería.\n\nLos honorarios se presupuestan según el volumen y el alcance del proyecto. Te propongo coordinar una primera reunión virtual para conocer las necesidades de tu institución y, en base a eso, te envío una propuesta a medida.\n\nPara avanzar, respondé este correo con un breve detalle de lo que necesitás y tus días y horarios de preferencia para la reunión.\n\nSaludos cordiales,\nDra. Agustina Risso Patrón\nInfectología · Terapia Intensiva\narissopatron.netlify.app",
+ "Interconsulta y discusión de casos": "Hola, gracias por tu consulta.\n\nSoy médica especialista en Infectología y en Terapia Intensiva (MN 139791), con experiencia en pacientes internados en sala general y en terapia intensiva. Trabajo en forma 100% virtual.\n\nLa interconsulta incluye la revisión previa del caso, una videollamada para discutirlo y una devolución escrita con las sugerencias diagnósticas y terapéuticas.\n\nLos honorarios se presupuestan según el volumen y el alcance de lo que necesites (un caso puntual o el seguimiento de varios casos).\n\nPara avanzar, respondé este correo con un breve resumen del caso, sin datos identificatorios del paciente, y tus días y horarios de preferencia.\n\nSaludos cordiales,\nDra. Agustina Risso Patrón\nInfectología · Terapia Intensiva\narissopatron.netlify.app",
+ "Gestión en salud y formación médica": "Hola, gracias por tu consulta.\n\nSoy médica especialista en Infectología y en Terapia Intensiva (MN 139791) y Especialista en Gestión y Dirección de Instituciones de Salud (Universidad Austral), con experiencia como jefa de residentes y directora del curso de Infectología Crítica junto a la Universidad del Salvador (USAL). Trabajo en forma 100% virtual.\n\nEn gestión en salud y formación médica puedo colaborar con la organización y dirección de cursos, jornadas y capacitaciones; el diseño y la actualización de programas docentes y de residencias; la gestión de circuitos asistenciales, procesos e indicadores de calidad; y la implementación de protocolos y mejora de procesos institucionales.\n\nLos honorarios se presupuestan según el volumen y el alcance del proyecto. Te propongo coordinar una primera reunión virtual para conocer tu necesidad y, en base a eso, te envío una propuesta a medida.\n\nPara avanzar, respondé este correo con un breve detalle del proyecto (institución, tipo de actividad y plazos) y tus días y horarios de preferencia para la reunión.\n\nSaludos cordiales,\nDra. Agustina Risso Patrón\nInfectología · Terapia Intensiva\narissopatron.netlify.app"
+};
 
 const $ = id => document.getElementById(id);
-$("mailDest").textContent = MAIL;
-let textoConsulta = "";
 
 document.querySelectorAll("[data-servicio]").forEach(el => {
   el.addEventListener("click", e => {
@@ -458,7 +459,7 @@ document.querySelectorAll("[data-servicio]").forEach(el => {
   });
 });
 
-$("form").addEventListener("submit", e => {
+$("form").addEventListener("submit", async e => {
   e.preventDefault();
   const v = id => $(id).value.trim();
   const faltan = [];
@@ -466,25 +467,39 @@ $("form").addEventListener("submit", e => {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("email"))) faltan.push("un correo válido");
   if (!v("perfil")) faltan.push("cómo consultás");
   if (!v("servicio")) faltan.push("el servicio");
+  if (!v("mensaje")) faltan.push("tu consulta");
   if (faltan.length) {
-    $("err").textContent = "Completá " + faltan.join(", ") + " para preparar la consulta.";
+    const lista = faltan.length > 1 ? faltan.slice(0, -1).join(", ") + " y " + faltan.slice(-1) : faltan[0];
+    $("err").textContent = "Completá " + lista + " para enviar la consulta.";
     $("err").hidden = false; $("listo").hidden = true; return;
   }
+  if ($("honey").value) return;
   $("err").hidden = true;
-  const asunto = "Consulta de honorarios – " + v("servicio");
-  textoConsulta =
-    "Hola Dra. Risso Patrón,\n\n" +
-    "Quisiera recibir información sobre honorarios y modalidad de trabajo.\n\n" +
-    "Nombre: " + v("nombre") + "\n" +
-    "Correo: " + v("email") + "\n" +
-    "Consulto como: " + v("perfil") + "\n" +
-    (v("institucion") ? "Institución: " + v("institucion") + "\n" : "") +
-    "Servicio: " + v("servicio") + "\n" +
-    (v("mensaje") ? "\nDetalle:\n" + v("mensaje") + "\n" : "") +
-    "\nGracias.";
-  $("abrirMail").href = "mailto:" + MAIL + "?subject=" + encodeURIComponent(asunto) + "&body=" + encodeURIComponent(textoConsulta);
-  $("listo").hidden = false; $("copiado").hidden = true;
-  $("abrirMail").focus();
+  const btn = $("enviar"); btn.disabled = true; btn.textContent = "Enviando…";
+  const datos = {
+    "Nombre": v("nombre"),
+    "email": v("email"),
+    "Consulta como": v("perfil"),
+    "Institución": v("institucion") || "—",
+    "Servicio": v("servicio"),
+    "Consulta": v("mensaje"),
+    _subject: "Nueva consulta web – " + v("servicio"),
+    _replyto: v("email"),
+    _template: "table",
+    _autoresponse: RESPUESTAS[v("servicio")] || ""
+  };
+  try {
+    const r = await fetch(ENDPOINT, {method: "POST", headers: {"Content-Type": "application/json", "Accept": "application/json"}, body: JSON.stringify(datos)});
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok || String(j.success) === "false") throw new Error(j.message || "error");
+    $("form").querySelectorAll("input,select,textarea").forEach(x => { if (x.id !== "honey") x.value = ""; });
+    $("listo").hidden = false; $("listo").focus();
+  } catch (_) {
+    $("err").textContent = "No se pudo enviar la consulta. Probá de nuevo en unos minutos o escribí a " + MAIL + ".";
+    $("err").hidden = false;
+  } finally {
+    btn.disabled = false; btn.textContent = "Enviar consulta";
+  }
 });
 
 // ---- Calendario de salud ----
@@ -585,17 +600,4 @@ fetch("novedades.json", {cache:"no-store"}).then(r => r.ok ? r.json() : null).th
   });
 }).catch(() => {});
 
-$("copiar").addEventListener("click", () => {
-  const asunto = "Asunto: Consulta de honorarios – " + $("servicio").value + "\n\n";
-  const done = () => { $("copiado").hidden = false; };
-  try {
-    navigator.clipboard.writeText(asunto + textoConsulta).then(done).catch(() => fallback());
-  } catch (_) { fallback(); }
-  function fallback(){
-    const ta = document.createElement("textarea"); ta.value = asunto + textoConsulta;
-    document.body.appendChild(ta); ta.select();
-    try { document.execCommand("copy"); done(); } catch(_){}
-    ta.remove();
-  }
-});
 </script>
