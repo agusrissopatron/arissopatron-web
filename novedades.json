@@ -1,4 +1,21 @@
 {
-  "actualizado": "",
-  "items": []
+  "actualizado": "2026-11-09",
+  "items": [
+    {
+      "fecha": "2026-11-06",
+      "tipo": "Alerta",
+      "titulo": "Sarampión: la OPS emite recomendaciones ante la visita del papa León XIV",
+      "resumen": "El papa visita Argentina, Uruguay y Perú del 6 al 17 de noviembre. Entre enero y octubre de 2026 la Región notificó 57.666 casos confirmados de sarampión, 4,7 veces más que en 2025. La OPS recomienda verificar que la vacunación esté al día antes de viajar.",
+      "fuente": "Organización Panamericana de la Salud (OPS/OMS)",
+      "url": "https://www.paho.org/es/noticias/6-11-2026-ops-emite-recomendaciones-para-viajeros-ante-visita-papa-leon-xiv-america-latina"
+    },
+    {
+      "fecha": "2026-11-06",
+      "tipo": "Vacunación",
+      "titulo": "Lanzan una campaña nacional para promover la vacunación de Calendario",
+      "resumen": "La campaña, en medios y redes, se centra en la seguridad de las vacunas y en completar los esquemas del Calendario Nacional según cada etapa de vida. Además, se enviaron dosis adicionales de vacuna contra la hepatitis A a Santa Fe, Chaco, Entre Ríos, Buenos Aires y Misiones.",
+      "fuente": "Ministerio de Salud de la Nación",
+      "url": "https://www.argentina.gob.ar/noticias/el-gobierno-nacional-lanza-una-campana-de-comunicacion-masiva-para-promover-la-vacunacion"
+    }
+  ]
 }
