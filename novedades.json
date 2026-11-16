@@ -1,6 +1,22 @@
 {
-  "actualizado": "2026-11-09",
+  "actualizado": "2026-11-16",
   "items": [
+    {
+      "fecha": "2026-11-11",
+      "tipo": "Brote",
+      "titulo": "Ébola por virus Bundibugyo: la OMS mantiene la emergencia de salud pública internacional",
+      "resumen": "El brote en la República Democrática del Congo suma casi 11.000 casos confirmados y más de 5.300 muertes en ocho provincias. Kenia registró nueve casos vinculados a un caso importado y Nigeria, un caso importado. La OMS pidió a los países levantar las restricciones generales de viaje.",
+      "fuente": "Organización Mundial de la Salud (OMS)",
+      "url": "https://www.who.int/news-room/speeches/item/who-director-general-s-opening-remarks-at-the-member-state-briefing-on-ebola-outbreak-in-the-democratic-republic-of-the-congo---11-november-2026"
+    },
+    {
+      "fecha": "2026-11-11",
+      "tipo": "Actualización",
+      "titulo": "Boletín Epidemiológico: bajan los virus respiratorios y no hay dengue autóctono",
+      "resumen": "En la semana 43 continuó el descenso de virus respiratorios, con más proporción de influenza B y de VSR en internados. No hubo casos nuevos de dengue: en la temporada hay 6 confirmados, todos importados. Salud recomienda tener al día las vacunas antigripal, neumococo, tos convulsa y VSR.",
+      "fuente": "Ministerio de Salud de la Nación",
+      "url": "https://www.argentina.gob.ar/noticias/actualizacion-del-boletin-epidemiologico-nacional-de-la-semana-ndeg-43"
+    },
     {
       "fecha": "2026-11-06",
       "tipo": "Alerta",
