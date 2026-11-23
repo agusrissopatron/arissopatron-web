@@ -1,6 +1,30 @@
 {
-  "actualizado": "2026-11-09",
+  "actualizado": "2026-11-23",
   "items": [
+    {
+      "fecha": "2026-11-17",
+      "tipo": "Brote",
+      "titulo": "Sarampión: Bolivia, México y Estados Unidos pierden el estatus de eliminación",
+      "resumen": "La comisión regional de verificación determinó que Bolivia, México y Estados Unidos perdieron el estatus de eliminación del sarampión. Al 13 de noviembre, la Región sumaba 58.213 casos confirmados y 82 muertes. La OPS insta a sostener coberturas de al menos 95% con dos dosis en cada comunidad.",
+      "fuente": "Organización Panamericana de la Salud (OPS/OMS)",
+      "url": "https://www.paho.org/es/noticias/17-11-2026-ops-insta-paises-intensificar-esfuerzos-para-detener-brotes-sarampion-avanzar"
+    },
+    {
+      "fecha": "2026-11-17",
+      "tipo": "Alerta",
+      "titulo": "Influenza y otros virus respiratorios: alerta de la OPS por el inicio de temporada",
+      "resumen": "La actividad de influenza aumenta en varios países de las Américas y el VSR circula en niveles altos en algunos países del hemisferio norte. La OPS recomienda reforzar la vigilancia, preparar los servicios de salud y acelerar la vacunación de grupos prioritarios antes del pico.",
+      "fuente": "Organización Panamericana de la Salud (OPS/OMS)",
+      "url": "https://www.paho.org/es/documentos/alerta-epidemiologica-influenza-estacional-otros-virus-respiratorios-inicio-temporada-0"
+    },
+    {
+      "fecha": "2026-11-18",
+      "tipo": "Actualización",
+      "titulo": "Resistencia a antibióticos: la OPS advierte un aumento en infecciones graves",
+      "resumen": "En las Américas, la resistencia de Klebsiella pneumoniae a carbapenémicos pasó de alrededor del 15% en 2015 al 26% en 2024. La OPS llama a fortalecer la vigilancia, prevenir infecciones y usar los antimicrobianos de forma responsable, en el marco de la Semana Mundial (18 al 24 de noviembre).",
+      "fuente": "Organización Panamericana de la Salud (OPS/OMS)",
+      "url": "https://www.paho.org/es/noticias/18-11-2026-ops-alerta-sobre-aumento-resistencia-antibioticos-utilizados-para-tratar"
+    },
     {
       "fecha": "2026-11-06",
       "tipo": "Alerta",
